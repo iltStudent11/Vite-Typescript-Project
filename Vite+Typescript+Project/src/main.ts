@@ -1,60 +1,41 @@
 import './style.css'
-import typescriptLogo from './assets/typescript.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import { setupCounter } from './counter.ts'
+import { setupVibePlanner } from './counter.ts'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-<section id="center">
-  <div class="hero">
-    <img src="${heroImg}" class="base" width="170" height="179">
-    <img src="${typescriptLogo}" class="framework" alt="TypeScript logo"/>
-    <img src="${viteLogo}" class="vite" alt="Vite logo" />
-  </div>
-  <div>
-    <h1>Get started</h1>
-    <p>Edit <code>src/main.ts</code> and save to test <code>HMR</code></p>
-  </div>
-  <button id="counter" type="button" class="counter"></button>
-</section>
+<main class="app-shell">
+  <header>
+    <p class="eyebrow">Vite + TypeScript Interactive Project</p>
+    <h1>Vibe Planner</h1>
+    <p class="subtitle">Pick your vibe, build your task list, and track momentum in real time.</p>
+  </header>
 
-<div class="ticks"></div>
+  <section class="panel">
+    <h2>Today’s vibe</h2>
+    <div class="vibe-buttons" role="group" aria-label="Choose your vibe">
+      <button type="button" class="vibe-btn" data-vibe="focus">🎯 Focus</button>
+      <button type="button" class="vibe-btn" data-vibe="calm">🌊 Calm</button>
+      <button type="button" class="vibe-btn" data-vibe="creative">✨ Creative</button>
+    </div>
+    <p class="current-vibe">Current vibe: <strong id="current-vibe">Focus</strong></p>
+  </section>
 
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#documentation-icon"></use></svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank">
-          <img class="logo" src="${viteLogo}" alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://www.typescriptlang.org" target="_blank">
-          <img class="button-icon" src="${typescriptLogo}" alt="">
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#social-icon"></use></svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li><a href="https://github.com/vitejs/vite" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#github-icon"></use></svg>GitHub</a></li>
-      <li><a href="https://chat.vite.dev/" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#discord-icon"></use></svg>Discord</a></li>
-      <li><a href="https://x.com/vite_js" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#x-icon"></use></svg>X.com</a></li>
-      <li><a href="https://bsky.app/profile/vite.dev" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#bluesky-icon"></use></svg>Bluesky</a></li>
-    </ul>
-  </div>
-</section>
+  <section class="panel">
+    <h2>Task board</h2>
+    <form id="task-form" class="task-form">
+      <input id="task-input" name="task" type="text" placeholder="Add a task..." maxlength="70" required />
+      <button type="submit">Add</button>
+    </form>
 
-<div class="ticks"></div>
-<section id="spacer"></section>
+    <div class="filters" role="group" aria-label="Filter tasks">
+      <button type="button" class="filter-btn active" data-filter="all">All</button>
+      <button type="button" class="filter-btn" data-filter="active">Active</button>
+      <button type="button" class="filter-btn" data-filter="done">Done</button>
+    </div>
+
+    <ul id="task-list" class="task-list" aria-live="polite"></ul>
+    <p id="stats" class="stats"></p>
+  </section>
+</main>
 `
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+setupVibePlanner(document.querySelector<HTMLElement>('#app')!)
