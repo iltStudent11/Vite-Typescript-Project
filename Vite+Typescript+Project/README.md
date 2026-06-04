@@ -4,7 +4,7 @@ An interactive starter project built with Vite and TypeScript. It includes a sma
 
 ## Project Goal
 
-This project is designed to be a clean baseline that other developers can quickly run, understand, and extend.
+This project is designed to be a simple planner that can be built upon.
 
 ## Prerequisites
 
@@ -82,6 +82,6 @@ npm run preview
 ## Extending This Project
 
 Good next steps for contributors:
-- Add persistent storage (for example, `localStorage`) for tasks and vibe.
+- Add persistent storage (for example, localStorage) for tasks and vibe.
 - Split logic into feature modules as the app grows.
 - Add tests for task operations and filtering behavior.
