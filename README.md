@@ -2,7 +2,7 @@
 
 An interactive starter project built with Vite and TypeScript. It includes a small task-planner UI with vibe selection, task management, and filtering.
 
-## Project Goals
+## Project Goal
 
 This project is designed to be a simple planner that can be built upon.
 
