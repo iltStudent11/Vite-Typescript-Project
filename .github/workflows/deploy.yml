@@ -20,6 +20,9 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Vite+Typescript+Project
 
     steps:
       - name: Checkout
@@ -30,6 +33,7 @@ jobs:
         with:
           node-version: 20
           cache: npm
+          cache-dependency-path: Vite+Typescript+Project/package-lock.json
 
       - name: Install dependencies
         run: npm ci
@@ -43,7 +47,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./Vite+Typescript+Project/dist
 
       - name: Deploy to GitHub Pages
         id: deployment
